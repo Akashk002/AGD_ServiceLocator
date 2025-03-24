@@ -9,6 +9,24 @@ namespace ServiceLocator.Sound
         [SerializeField] private AudioSource audioEffects;
         [SerializeField] private AudioSource backgroundMusic;
 
+        public static SoundService Instance { get { return instance; } }
+        private static SoundService instance;
+
+
+        private void Awake()
+        {
+            if (instance == null)
+            {
+                instance = this;
+            }
+            else
+            {
+                Destroy(this.gameObject);
+                Debug.LogError("There are multiple instances of PlayerService in the scene. Destroying the new one.");
+            }
+        }
+
+
         private void Start()
         {
             PlaybackgroundMusic(SoundType.BackgroundMusic, true);
