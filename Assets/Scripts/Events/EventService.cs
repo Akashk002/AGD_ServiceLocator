@@ -11,11 +11,9 @@ namespace ServiceLocator.Events
     {
         public GameEventController<int> OnMapSelected { get; private set; }
 
-        protected override void Awake()
+        public EventService()
         {
-            base.Awake();
             OnMapSelected = new GameEventController<int>();
         }
-   
     }
 }

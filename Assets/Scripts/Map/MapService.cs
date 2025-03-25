@@ -7,7 +7,7 @@ using ServiceLocator.Events;
 
 namespace ServiceLocator.Map
 {
-    public class MapService : MonoBehaviour
+    public class MapService 
     {
        private MapScriptableObject mapScriptableObject;
 
@@ -29,7 +29,7 @@ namespace ServiceLocator.Map
         private void LoadMap(int mapId)
         {
             currentMapData = mapScriptableObject.MapDatas.Find(mapData => mapData.MapID == mapId);
-            currentGrid =  Instantiate(currentMapData.MapPrefab);
+            currentGrid = Object.Instantiate(currentMapData.MapPrefab);
             currentTileMap = currentGrid.GetComponentInChildren<Tilemap>();
         }
 

@@ -13,6 +13,7 @@ public class GameService : GenericMonoSingleton<GameService>
 {
     public PlayerService playerService { get; private set; }
     public SoundService soundService { get; private set; }
+    public EventService eventService { get; private set; }
     public MapService mapService { get; private set; }
     public WaveService waveService { get; private set; }
 
@@ -32,6 +33,7 @@ public class GameService : GenericMonoSingleton<GameService>
     {
         playerService  = new PlayerService(playerScriptableObject);
         soundService  = new SoundService(soundScriptableObject,audioEffects,backgroundMusic);
+        eventService = new EventService();
         mapService = new MapService(mapScriptableObject);
         waveService = new WaveService(waveScriptableObject);
     }
