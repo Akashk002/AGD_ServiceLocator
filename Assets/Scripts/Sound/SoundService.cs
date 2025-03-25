@@ -4,14 +4,22 @@ using ServiceLocator.Utilities;
 
 namespace ServiceLocator.Sound
 {
-    public class SoundService : GenericMonoSingleton<SoundService>
+    public class SoundService
     {
-        [SerializeField] private SoundScriptableObject soundScriptableObject;
-        [SerializeField] private AudioSource audioEffects;
-        [SerializeField] private AudioSource backgroundMusic;
+        private SoundScriptableObject soundScriptableObject;
+        private AudioSource audioEffects;
+        private AudioSource backgroundMusic;
 
         private void Start()
         {
+
+        }
+
+        public SoundService(SoundScriptableObject soundScriptableObject,AudioSource AudioEffects,AudioSource BackgroundMusic)
+        {
+            this.soundScriptableObject = soundScriptableObject;
+            this.audioEffects = AudioEffects;
+            this.backgroundMusic = BackgroundMusic;
             PlaybackgroundMusic(SoundType.BackgroundMusic, true);
         }
 

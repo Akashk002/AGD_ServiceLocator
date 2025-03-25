@@ -16,6 +16,6 @@ namespace ServiceLocator.Events
             base.Awake();
             OnMapSelected = new GameEventController<int>();
         }
-        
+   
     }
 }
