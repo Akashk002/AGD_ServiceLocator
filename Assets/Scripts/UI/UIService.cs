@@ -4,6 +4,8 @@ using TMPro;
 using UnityEngine.UI;
 using ServiceLocator.Main;
 using UnityEngine.SceneManagement;
+using ServiceLocator.Events;
+using ServiceLocator.Wave;
 
 namespace ServiceLocator.UI
 {
@@ -33,7 +35,8 @@ namespace ServiceLocator.UI
         [SerializeField] private TextMeshProUGUI gameEndText;
         [SerializeField] private Button playAgainButton;
         [SerializeField] private Button quitButton;
-
+        private EventService eventService;
+        private WaveService waveService;
 
         private void Start()
         {
@@ -45,12 +48,20 @@ namespace ServiceLocator.UI
             levelSelectionPanel.SetActive(true);
             gameEndPanel.SetActive(false);
 
-            nextWaveButton.onClick.AddListener(OnNextWaveButton);
             quitButton.onClick.AddListener(OnQuitButtonClicked);
             playAgainButton.onClick.AddListener(OnPlayAgainButtonClicked);
         }
 
-        public void SubscribeToEvents() => GameService.Instance.EventService.OnMapSelected.AddListener(OnMapSelected);
+
+        public void Init(WaveService waveService, EventService eventService)
+        {
+            this.waveService = waveService;
+            this.eventService = eventService;
+            nextWaveButton.onClick.AddListener(OnNextWaveButton);
+            SubscribeToEvents();
+        }
+
+        public void SubscribeToEvents() => eventService.OnMapSelected.AddListener(OnMapSelected);
 
         public void OnMapSelected(int mapID)
         {
@@ -63,7 +74,7 @@ namespace ServiceLocator.UI
 
         private void OnNextWaveButton()
         {
-            GameService.Instance.WaveService.StarNextWave();
+            waveService.StarNextWave();
             SetNextWaveButton(false);
         }
 
