@@ -17,7 +17,7 @@ namespace ServiceLocator.Player.Projectile
         private Transform projectileContainer;
         PlayerService playerService;
 
-        public ProjectilePool(ProjectileView projectilePrefab, List<ProjectileScriptableObject> projectileScriptableObjects , PlayerService playerService)
+        public ProjectilePool(ProjectileView projectilePrefab, List<ProjectileScriptableObject> projectileScriptableObjects , PlayerService playerService = null)
         {
             this.playerService = playerService;
             this.projectilePrefab = projectilePrefab;

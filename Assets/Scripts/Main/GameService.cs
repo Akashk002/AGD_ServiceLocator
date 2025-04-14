@@ -56,7 +56,6 @@ namespace ServiceLocator.Main
             UIService.Init(WaveService,EventService,PlayerService);
         }
 
-
         private void Update()
         {
             PlayerService.Update();

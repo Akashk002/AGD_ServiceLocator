@@ -17,7 +17,7 @@ namespace ServiceLocator.Player
         private float attackTimer;
         SoundService soundService;
 
-        public MonkeyController(MonkeyScriptableObject monkeyScriptableObject, ProjectilePool projectilePool, SoundService soundService)
+        public MonkeyController(MonkeyScriptableObject monkeyScriptableObject, ProjectilePool projectilePool, SoundService soundService = null)
         {
             this.soundService = soundService;
             monkeyView = Object.Instantiate(monkeyScriptableObject.Prefab);
